@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "650661606490",
+    "project_id": "matthewcoffix",
+    "storage_bucket": "matthewcoffix.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:650661606490:android:0af0080aae37b2e3639463",
+        "android_client_info": {
+          "package_name": "com.matthew.matthewcoffix"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvJsOgVHEyq1gPNuflHqLi1VCjfso0OeM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

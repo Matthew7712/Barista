@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+  <style name="Theme.MatthewCoffix.Splash" parent="Theme.MatthewCoffix">
+    <item name="android:windowSplashScreenBackground" tools:targetApi="s">#121212</item>
+    <item name="android:windowSplashScreenAnimatedIcon" tools:targetApi="s">@mipmap/ic_launcher_round</item>
+  </style>
+</resources>
