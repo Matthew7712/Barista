@@ -54,7 +54,8 @@ android {
 dependencies {
     /*Room database*/
     implementation(libs.androidx.room.runtime)
-    implementation(libs.firebase.auth) // Библиотека "Room"
+    implementation(libs.firebase.auth)
+    implementation(libs.androidx.navigation.runtime.ktx) // Библиотека "Room"
     kapt(libs.androidx.room.compiler) // Кодогенератор
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.runtime.livedata)

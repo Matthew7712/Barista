@@ -19,6 +19,7 @@ import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.matthew.matthewcoffix.presantation.theme.MatthewCoffixTheme
 import com.matthew.matthewcoffix.ui.OnboardingScreen
+import com.matthew.matthewcoffix.ui.signIn.SignIn
 
 class MainActivity : ComponentActivity() {
 
@@ -53,6 +54,12 @@ class MainActivity : ComponentActivity() {
                     exitTransition = { fadeOut() }
                 ) {
                     OnboardingScreen(navController = navController)
+                }
+
+                composable(
+                    "SignIn"
+                ) {
+                    SignIn(navController = navController)
                 }
             }
         }

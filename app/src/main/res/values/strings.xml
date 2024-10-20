@@ -5,4 +5,22 @@
     <string name="onboarding_screen_title">Fall in Love with Coffee in Blissful Delight!</string>
     <string name="onboarding_screen_subtitle">Welcome to our cozy coffee corner, where every cup is a delightful for you.</string>
     <string name="onboarding_screen_button_text">Get Started!</string>
+
+    /*SignIn Screen*/
+    <string name="sign_in_screen_title">Welcome Back!\nGlad to see you, Again!</string>
+    <string name="sign_in_screen_email_input_field">Email Address</string>
+    <string name="sign_in_screen_password_input_field">Password</string>
+    <string name="sign_in_screen_forgot_password_text">Forgot Password?</string>
+    <string name="sign_in_screen_button_text">Login</string>
+    <string name="sign_in_screen_or_text">Or Login With</string>
+    <string name="sign_in_screen_register_text">Don\'t have an account? Register </string>
+
+    /*SignUp Screen*/
+    <string name="sign_up_screen_title">Hello, Register here to get started.</string>
+    <string name="sign_up_screen_email_input_field">Email Address</string>
+    <string name="sign_up_screen_password_input_field">Password</string>
+    <string name="sign_up_screen_forgot_password_text">Forgot Password?</string>
+    <string name="sign_up_screen_button_text">Register</string>
+    <string name="sign_up_screen_or_text">Or Register With</string>
+    <string name="sign_up_screen_register_text">Already have an account? Login </string>
 </resources>
