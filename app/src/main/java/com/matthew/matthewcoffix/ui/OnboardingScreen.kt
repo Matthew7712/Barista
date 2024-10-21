@@ -50,13 +50,15 @@ fun OnboardingScreen(
             modifier = Modifier
                 .fillMaxSize()
         ) {
-            FloatingPlate()
+            FloatingPlate(navController = navController)
         }
     }
 }
 
 @Composable
-fun FloatingPlate() {
+fun FloatingPlate(
+    navController: NavController
+) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
@@ -86,7 +88,9 @@ fun FloatingPlate() {
         Spacer(modifier = Modifier.height(30.dp))
         BasicButton(
             text = stringResource(id = R.string.onboarding_screen_button_text),
-            onClick = {}
+            onClick = {
+                navController.navigate("Sign In")
+            }
         )
     }
 }

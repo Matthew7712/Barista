@@ -57,7 +57,7 @@ class MainActivity : ComponentActivity() {
                 }
 
                 composable(
-                    "SignIn"
+                    "Sign In"
                 ) {
                     SignIn(navController = navController)
                 }

@@ -80,3 +80,57 @@ val raleway = FontFamily(
         style = FontStyle.Normal
     ),
 )
+
+val semiBoldFirstHeader = TextStyle(
+    fontSize = 36.sp,
+    fontFamily = openSans,
+    fontWeight = FontWeight.W600
+)
+
+val mediumFirstHeader = TextStyle(
+    fontSize = 36.sp,
+    fontFamily = openSans,
+    fontWeight = FontWeight.W500
+)
+
+val mediumNormalBody = TextStyle(
+    fontSize = 16.sp,
+    fontFamily = openSans,
+    fontWeight = FontWeight.W500
+)
+
+val regularNormalBody = TextStyle(
+    fontSize = 16.sp,
+    fontFamily = openSans,
+    fontWeight = FontWeight.W400
+)
+
+val mediumBasicBody = TextStyle(
+    fontSize = 16.sp,
+    fontFamily = openSans,
+    fontWeight = FontWeight.W500
+)
+
+val regularBasicBody = TextStyle(
+    fontSize = 16.sp,
+    fontFamily = openSans,
+    fontWeight = FontWeight.W400
+)
+
+val semiBoldSmallBody = TextStyle(
+    fontSize = 14.sp,
+    fontFamily = openSans,
+    fontWeight = FontWeight.W600
+)
+
+val mediumSmallBody = TextStyle(
+    fontSize = 14.sp,
+    fontFamily = openSans,
+    fontWeight = FontWeight.W500
+)
+
+val regularSmallBody = TextStyle(
+    fontSize = 14.sp,
+    fontFamily = openSans,
+    fontWeight = FontWeight.W400
+)

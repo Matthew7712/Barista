@@ -51,7 +51,6 @@ fun MatthewCoffixTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
         content = content
     )
 }
