@@ -1,5 +1,6 @@
 package com.matthew.matthewcoffix.ui.signIn
 
+import android.widget.Space
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -9,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,15 +24,22 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.matthew.matthewcoffix.R
+import com.matthew.matthewcoffix.presantation.common.component.BasicButton
+import com.matthew.matthewcoffix.presantation.common.component.IconButton
 import com.matthew.matthewcoffix.presantation.common.component.InputField
+import com.matthew.matthewcoffix.presantation.theme.DarkBlue100
+import com.matthew.matthewcoffix.presantation.theme.Orange40
+import com.matthew.matthewcoffix.presantation.theme.regularNormalBody
 import com.matthew.matthewcoffix.presantation.theme.semiBoldFirstHeader
 
+@Preview
 @Composable
 fun SignIn(
-    navController: NavController
+/*    navController: NavController*/
 ){
     var userEmail by remember {
         mutableStateOf("")
@@ -42,8 +51,9 @@ fun SignIn(
 
 
     Column(
-        modifier = Modifier.fillMaxSize()
-            .background(color = Color(0xFF0C0C0C))
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = DarkBlue100)
             .padding(24.dp)
     ) {
         Row(
@@ -62,7 +72,7 @@ fun SignIn(
 
         Text(
             text = stringResource(R.string.sign_in_screen_title),
-            style = semiBoldFirstHeader
+            style = semiBoldFirstHeader.copy(color = Color.White)
         )
 
         Spacer(modifier = Modifier.height(25.dp))
@@ -73,6 +83,35 @@ fun SignIn(
             onEmailChanged = { newEmail -> userEmail = newEmail },
             onPasswordChanged = { newPassword -> userPassword = newPassword }
         )
+
+        Spacer(modifier = Modifier.height(15.dp))
+
+        Column(
+            horizontalAlignment = Alignment.End,
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(text = stringResource(id = R.string.sign_in_screen_forgot_password_text), style = regularNormalBody.copy(color = Orange40))
+        }
+
+        Spacer(modifier = Modifier.height(25.dp))
+
+        BasicButton(text = stringResource(id = R.string.sign_in_screen_button_text), onClick = {})
+
+        Spacer(modifier = Modifier.height(25.dp))
+
+        SignInWithPlatform()
+
+        Spacer(modifier = Modifier.height(25.dp))
+
+        Column(
+            verticalArrangement = Arrangement.Bottom,
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.fillMaxSize()
+        ) {
+            Text(text = stringResource(id = R.string.sign_in_screen_register_text), style = regularNormalBody.copy(color = Color.White))
+        }
+
     }
 }
 
@@ -87,5 +126,21 @@ fun InputFields(
         InputField(word = email, hintText = stringResource(R.string.sign_in_screen_email_input_field), onChanged = onEmailChanged)
         Spacer(modifier = Modifier.height(10.dp))
         InputField(word = password, hintText = stringResource(R.string.sign_in_screen_password_input_field), onChanged = onPasswordChanged)
+    }
+}
+
+@Composable
+fun SignInWithPlatform(){
+    Row(
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        IconButton(icon = painterResource(id = R.drawable.facebook_f), tint = Color.White, onclick = {})
+        Spacer(modifier = Modifier.width(5.dp))
+        IconButton(icon = painterResource(id = R.drawable.google), tint = Color.White ,onclick = {})
+        Spacer(modifier = Modifier.width(5.dp))
+        IconButton(icon = painterResource(id = R.drawable.apple), tint = Color.White, onclick = {})
+        Spacer(modifier = Modifier.width(5.dp))
     }
 }

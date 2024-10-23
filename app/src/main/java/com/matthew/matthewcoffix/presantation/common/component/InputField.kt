@@ -9,12 +9,14 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.unit.dp
+import com.matthew.matthewcoffix.presantation.theme.DarkBlue80
 import com.matthew.matthewcoffix.presantation.theme.mediumSmallBody
 
 @Composable
@@ -35,10 +37,14 @@ fun InputField(
                 keyboardController?.hide()
             }
         ),
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
             .height(56.dp)
-            .border(width = 1.dp, color = Color.Gray, shape = RoundedCornerShape(15.dp))
+            .border(width = 1.dp, color = Color(0xFF10141B), shape = RoundedCornerShape(15.dp))
             .clip(shape = RoundedCornerShape(15.dp))
-            .background(color = Color.Blue)
+            .background(color = Color.Blue),
+        colors = TextFieldDefaults.colors(
+            unfocusedContainerColor = DarkBlue80
+        )
     )
 }

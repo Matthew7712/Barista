@@ -17,7 +17,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.matthew.matthewcoffix.presantation.theme.Brown100
+import com.matthew.matthewcoffix.presantation.theme.Orange40
 
 @Composable
 fun BasicButton(text: String, onClick: () -> Unit){
@@ -28,7 +28,7 @@ fun BasicButton(text: String, onClick: () -> Unit){
             .fillMaxWidth()
             .height(56.dp)
             .clip(shape = RoundedCornerShape(15.dp))
-            .background(color = Brown100)
+            .background(color = Orange40)
             .clickable {
                 onClick()
             }

@@ -59,7 +59,7 @@ class MainActivity : ComponentActivity() {
                 composable(
                     "Sign In"
                 ) {
-                    SignIn(navController = navController)
+                    SignIn(/*navController = navController*/)
                 }
             }
         }
