@@ -1,6 +1,7 @@
 package com.matthew.matthewcoffix.ui.signUp
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -24,6 +25,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.matthew.matthewcoffix.R
 import com.matthew.matthewcoffix.presantation.common.component.BasicButton
 import com.matthew.matthewcoffix.presantation.common.component.IconButton
@@ -33,10 +35,9 @@ import com.matthew.matthewcoffix.presantation.theme.Orange40
 import com.matthew.matthewcoffix.presantation.theme.regularNormalBody
 import com.matthew.matthewcoffix.presantation.theme.semiBoldFirstHeader
 
-@Preview
 @Composable
 fun SignUp(
-    /*    navController: NavController*/
+        navController: NavController
 ){
     var userEmail by remember {
         mutableStateOf("")
@@ -51,7 +52,7 @@ fun SignUp(
         modifier = Modifier
             .fillMaxSize()
             .background(color = DarkBlue100)
-            .padding(24.dp)
+            .padding(horizontal = 24.dp, vertical = 32.dp)
     ) {
         Row(
             horizontalArrangement = Arrangement.Center,
@@ -83,7 +84,7 @@ fun SignUp(
 
         Spacer(modifier = Modifier.height(25.dp))
 
-        BasicButton(text = stringResource(id = R.string.sign_up_screen_button_text), onClick = {})
+        BasicButton(text = stringResource(id = R.string.sign_up_screen_button_text), onClick = {navController.navigate("Home")})
 
         Spacer(modifier = Modifier.height(25.dp))
 
@@ -96,7 +97,11 @@ fun SignUp(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.fillMaxSize()
         ) {
-            Text(text = stringResource(id = R.string.sign_up_screen_register_text), style = regularNormalBody.copy(color = Color.White))
+            Text(
+                text = stringResource(id = R.string.sign_up_screen_register_text),
+                style = regularNormalBody.copy(color = Color.White),
+                modifier = Modifier.clickable { navController.navigate("Sign In") }
+            )
         }
 
     }

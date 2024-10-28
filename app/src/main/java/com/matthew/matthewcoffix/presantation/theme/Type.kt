@@ -1,6 +1,5 @@
 package com.matthew.matthewcoffix.presantation.theme
 
-import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -93,44 +92,63 @@ val mediumFirstHeader = TextStyle(
     fontWeight = FontWeight.W500
 )
 
+
+val semiboldThirdHeader = TextStyle(
+    fontSize = 28.sp,
+    fontFamily = openSans,
+    fontWeight = FontWeight.W600
+)
+
+val mediumSixthHeader = TextStyle(
+    fontSize = 18.sp,
+    fontFamily = openSans,
+    fontWeight = FontWeight.W500
+)
+
+val regularBigBody = TextStyle(
+    fontSize = 32.sp,
+    fontFamily = raleway,
+    fontWeight = FontWeight.W400
+)
+
 val mediumNormalBody = TextStyle(
     fontSize = 16.sp,
-    fontFamily = openSans,
+    fontFamily = raleway,
     fontWeight = FontWeight.W500
 )
 
 val regularNormalBody = TextStyle(
     fontSize = 16.sp,
-    fontFamily = openSans,
+    fontFamily = raleway,
     fontWeight = FontWeight.W400
 )
 
 val mediumBasicBody = TextStyle(
     fontSize = 16.sp,
-    fontFamily = openSans,
+    fontFamily = raleway,
     fontWeight = FontWeight.W500
 )
 
 val regularBasicBody = TextStyle(
     fontSize = 16.sp,
-    fontFamily = openSans,
+    fontFamily = raleway,
     fontWeight = FontWeight.W400
 )
 
 val semiBoldSmallBody = TextStyle(
     fontSize = 14.sp,
-    fontFamily = openSans,
+    fontFamily = raleway,
     fontWeight = FontWeight.W600
 )
 
 val mediumSmallBody = TextStyle(
     fontSize = 14.sp,
-    fontFamily = openSans,
+    fontFamily = raleway,
     fontWeight = FontWeight.W500
 )
 
 val regularSmallBody = TextStyle(
     fontSize = 14.sp,
-    fontFamily = openSans,
+    fontFamily = raleway,
     fontWeight = FontWeight.W400
 )

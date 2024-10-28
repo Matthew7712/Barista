@@ -15,11 +15,15 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
+import com.matthew.matthewcoffix.presantation.common.component.BottomNavigationBar
 import com.matthew.matthewcoffix.presantation.theme.MatthewCoffixTheme
 import com.matthew.matthewcoffix.ui.OnboardingScreen
+import com.matthew.matthewcoffix.ui.homeScreen.HomeScreen
 import com.matthew.matthewcoffix.ui.signIn.SignIn
+import com.matthew.matthewcoffix.ui.signUp.SignUp
 
 class MainActivity : ComponentActivity() {
 
@@ -29,20 +33,26 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MatthewCoffixTheme {
-                ScaffoldBody()
+                Host()
             }
         }
     }
 
+    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalAnimationApi::class)
     @Composable
-    fun ScaffoldBody(
+    fun Host() {
+        // Установка навигатора
+        val navController = rememberNavController()
 
-    ) {
-        // Установка цвета статусбара
-        val navController = rememberAnimatedNavController()
-
-        Scaffold { innerPadding ->
+        Scaffold(
+            bottomBar = {
+                // Проверяем текущий маршрут и отображаем нижнее меню только для HomeScreen
+                if (navController.currentDestination?.route == "Home") {
+                    BottomNavigationBar()
+                }
+            }
+        ) { innerPadding ->
             AnimatedNavHost(
                 navController = navController,
                 startDestination = "Onboarding",
@@ -56,10 +66,16 @@ class MainActivity : ComponentActivity() {
                     OnboardingScreen(navController = navController)
                 }
 
-                composable(
-                    "Sign In"
-                ) {
-                    SignIn(/*navController = navController*/)
+                composable("Sign In") {
+                    SignIn(navController = navController)
+                }
+
+                composable("Sign Up") {
+                    SignUp(navController = navController)
+                }
+
+                composable("Home") {
+                    HomeScreen()
                 }
             }
         }

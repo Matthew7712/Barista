@@ -2,6 +2,7 @@ package com.matthew.matthewcoffix.ui.signIn
 
 import android.widget.Space
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -36,10 +37,9 @@ import com.matthew.matthewcoffix.presantation.theme.Orange40
 import com.matthew.matthewcoffix.presantation.theme.regularNormalBody
 import com.matthew.matthewcoffix.presantation.theme.semiBoldFirstHeader
 
-@Preview
 @Composable
 fun SignIn(
-/*    navController: NavController*/
+    navController: NavController
 ){
     var userEmail by remember {
         mutableStateOf("")
@@ -54,7 +54,7 @@ fun SignIn(
         modifier = Modifier
             .fillMaxSize()
             .background(color = DarkBlue100)
-            .padding(24.dp)
+            .padding(horizontal = 24.dp, vertical = 32.dp)
     ) {
         Row(
             horizontalArrangement = Arrangement.Center,
@@ -96,7 +96,7 @@ fun SignIn(
 
         Spacer(modifier = Modifier.height(25.dp))
 
-        BasicButton(text = stringResource(id = R.string.sign_in_screen_button_text), onClick = {})
+        BasicButton(text = stringResource(id = R.string.sign_in_screen_button_text), onClick = {navController.navigate("Home")})
 
         Spacer(modifier = Modifier.height(25.dp))
 
@@ -109,7 +109,11 @@ fun SignIn(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.fillMaxSize()
         ) {
-            Text(text = stringResource(id = R.string.sign_in_screen_register_text), style = regularNormalBody.copy(color = Color.White))
+            Text(
+                text = stringResource(id = R.string.sign_in_screen_register_text),
+                style = regularNormalBody.copy(color = Color.White),
+                modifier = Modifier.clickable { navController.navigate("Sign Up") }
+            )
         }
 
     }
