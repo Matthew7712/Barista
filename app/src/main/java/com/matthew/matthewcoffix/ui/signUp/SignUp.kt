@@ -27,6 +27,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.matthew.matthewcoffix.R
+import com.matthew.matthewcoffix.data.event.UserEvent
+import com.matthew.matthewcoffix.data.state.UserState
 import com.matthew.matthewcoffix.presantation.common.component.BasicButton
 import com.matthew.matthewcoffix.presantation.common.component.IconButton
 import com.matthew.matthewcoffix.presantation.common.component.InputField
@@ -37,7 +39,9 @@ import com.matthew.matthewcoffix.presantation.theme.semiBoldFirstHeader
 
 @Composable
 fun SignUp(
-        navController: NavController
+    navController: NavController,
+    onEvent: (UserEvent) -> Unit,
+    state: UserState
 ){
     var userEmail by remember {
         mutableStateOf("")
@@ -84,7 +88,10 @@ fun SignUp(
 
         Spacer(modifier = Modifier.height(25.dp))
 
-        BasicButton(text = stringResource(id = R.string.sign_up_screen_button_text), onClick = {navController.navigate("Home")})
+        BasicButton(text = stringResource(id = R.string.sign_up_screen_button_text), onClick = {
+            onEvent(UserEvent.AddUser(email = userEmail, password = userPassword))
+            navController.navigate("Home")
+        })
 
         Spacer(modifier = Modifier.height(25.dp))
 

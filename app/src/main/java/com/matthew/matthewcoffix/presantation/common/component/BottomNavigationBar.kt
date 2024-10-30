@@ -21,6 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.matthew.matthewcoffix.R
 import com.matthew.matthewcoffix.presantation.common.viewmodels.BottomNavigationItem
+import com.matthew.matthewcoffix.presantation.theme.DarkBlue100
 import com.matthew.matthewcoffix.presantation.theme.DarkBlue80
 
 @Composable
@@ -31,7 +32,8 @@ fun BottomNavigationBar(){
 
     BottomAppBar(
         containerColor = Color.Transparent,
-        modifier = Modifier.padding(horizontal = 24.dp)
+        modifier = Modifier.background(color = DarkBlue100)
+            .padding(horizontal = 24.dp)
     ) {
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,

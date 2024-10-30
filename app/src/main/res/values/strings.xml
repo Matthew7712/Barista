@@ -23,4 +23,10 @@
     <string name="sign_up_screen_button_text">Register</string>
     <string name="sign_up_screen_or_text">Or Register With</string>
     <string name="sign_up_screen_register_text">Already have an account? Login </string>
+
+    /*HomeScreen*/
+    <string name="home_screen_greeting">Good Morning,</string>
+    <string name="home_screen_banner_title">Share Happiness</string>
+    <string name="home_screen_banner_subtitle">Buy 1 Get 2</string>
+    <string name="home_screen_banner_button_text">Find out more</string>
 </resources>

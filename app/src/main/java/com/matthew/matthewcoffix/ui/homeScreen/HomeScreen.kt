@@ -14,7 +14,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -32,6 +34,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.matthew.matthewcoffix.R
+import com.matthew.matthewcoffix.data.event.UserEvent
+import com.matthew.matthewcoffix.data.state.UserState
 import com.matthew.matthewcoffix.presantation.common.component.CustomIcon
 import com.matthew.matthewcoffix.presantation.common.component.DotSlider
 import com.matthew.matthewcoffix.presantation.common.component.SmallButton
@@ -45,25 +49,32 @@ import com.matthew.matthewcoffix.presantation.theme.regularBigBody
 import com.matthew.matthewcoffix.presantation.theme.regularSmallBody
 import com.matthew.matthewcoffix.presantation.theme.semiboldThirdHeader
 
-@Preview
 @Composable
-fun HomeScreen(){
+fun HomeScreen(
+    state: UserState,
+    onEvent: (UserEvent) -> Unit
+){
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(color = DarkBlue100)
             .padding(horizontal = 24.dp, vertical = 32.dp)
+            .verticalScroll(rememberScrollState())
     ) {
-        HomeScreenHeader()
+        HomeScreenHeader(state = state)
         Spacer(modifier = Modifier.height(20.dp))
         HomeScreenSalesBanner()
+        Spacer(modifier = Modifier.height(20.dp))
+        HomeScreenMenuList()
         Spacer(modifier = Modifier.height(20.dp))
         HomeScreenMenuList()
     }
 }
 
 @Composable
-fun HomeScreenHeader(){
+fun HomeScreenHeader(
+    state: UserState,
+){
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -71,7 +82,7 @@ fun HomeScreenHeader(){
     ) {
         Column {
             Text(text = stringResource(id = R.string.home_screen_greeting), style = regularSmallBody.copy(color = Color.Gray))
-            Text(text = "Matthew Rusakovich", style = mediumSixthHeader.copy(color = Color.White))
+            Text(text = state.email, style = mediumSixthHeader.copy(color = Color.White))
         }
 
         CustomIcon(tint = Color.White, backgroundColor = DarkBlue80, icon = painterResource(id = R.drawable.apple))

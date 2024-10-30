@@ -29,6 +29,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.matthew.matthewcoffix.R
+import com.matthew.matthewcoffix.data.event.UserEvent
+import com.matthew.matthewcoffix.data.state.UserState
+import com.matthew.matthewcoffix.data.viewmodel.UserViewModel
 import com.matthew.matthewcoffix.presantation.common.component.BasicButton
 import com.matthew.matthewcoffix.presantation.common.component.IconButton
 import com.matthew.matthewcoffix.presantation.common.component.InputField
@@ -39,7 +42,10 @@ import com.matthew.matthewcoffix.presantation.theme.semiBoldFirstHeader
 
 @Composable
 fun SignIn(
-    navController: NavController
+    navController: NavController,
+    onEvent: (UserEvent) -> Unit,
+    state: UserState,
+    userViewModel: UserViewModel
 ){
     var userEmail by remember {
         mutableStateOf("")
@@ -96,7 +102,10 @@ fun SignIn(
 
         Spacer(modifier = Modifier.height(25.dp))
 
-        BasicButton(text = stringResource(id = R.string.sign_in_screen_button_text), onClick = {navController.navigate("Home")})
+        BasicButton(text = stringResource(id = R.string.sign_in_screen_button_text), onClick = {
+            userViewModel.authenticateUser(email = userEmail, password = userPassword, onSuccess = { navController.navigate(("Home")) }, onError = {})
+        }
+        )
 
         Spacer(modifier = Modifier.height(25.dp))
 
