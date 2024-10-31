@@ -99,6 +99,12 @@ val semiboldThirdHeader = TextStyle(
     fontWeight = FontWeight.W600
 )
 
+val semiboldFourthHeader = TextStyle(
+    fontSize = 24.sp,
+    fontFamily = openSans,
+    fontWeight = FontWeight.W600
+)
+
 val mediumSixthHeader = TextStyle(
     fontSize = 18.sp,
     fontFamily = openSans,
@@ -112,13 +118,13 @@ val regularBigBody = TextStyle(
 )
 
 val mediumNormalBody = TextStyle(
-    fontSize = 16.sp,
+    fontSize = 18.sp,
     fontFamily = raleway,
     fontWeight = FontWeight.W500
 )
 
 val regularNormalBody = TextStyle(
-    fontSize = 16.sp,
+    fontSize = 18.sp,
     fontFamily = raleway,
     fontWeight = FontWeight.W400
 )

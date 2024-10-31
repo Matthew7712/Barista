@@ -9,29 +9,31 @@ import androidx.activity.viewModels
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.room.Room
 import com.google.accompanist.navigation.animation.AnimatedNavHost
-import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.matthew.matthewcoffix.data.DatabaseConnection
 import com.matthew.matthewcoffix.data.event.UserEvent
 import com.matthew.matthewcoffix.data.state.UserState
 import com.matthew.matthewcoffix.data.viewmodel.UserViewModel
 import com.matthew.matthewcoffix.presantation.common.component.BottomNavigationBar
 import com.matthew.matthewcoffix.presantation.theme.MatthewCoffixTheme
-import com.matthew.matthewcoffix.ui.OnboardingScreen
-import com.matthew.matthewcoffix.ui.homeScreen.HomeScreen
+import com.matthew.matthewcoffix.ui.onboarding.OnboardingScreen
+import com.matthew.matthewcoffix.ui.home.HomeScreen
+import com.matthew.matthewcoffix.ui.menu.MenuScreen
 import com.matthew.matthewcoffix.ui.signIn.SignIn
 import com.matthew.matthewcoffix.ui.signUp.SignUp
 
@@ -76,41 +78,52 @@ class MainActivity : ComponentActivity() {
         // Установка навигатора
         val navController = rememberNavController()
 
+        // Получаем текущий маршрут из бэкстека
+        val navBackStackEntry by navController.currentBackStackEntryAsState()
+        val currentRoute = navBackStackEntry?.destination?.route
+
         Scaffold(
-            bottomBar = {
-                // Проверяем текущий маршрут и отображаем нижнее меню только для HomeScreen
-                if (navController.currentDestination?.route == "Home") {
-                    BottomNavigationBar()
-                }
-            }
         ) { innerPadding ->
-            AnimatedNavHost(
-                navController = navController,
-                startDestination = "Onboarding",
-                modifier = Modifier.padding(innerPadding)
-            ) {
-                composable(
-                    "Onboarding",
-                    enterTransition = { fadeIn() },
-                    exitTransition = { fadeOut() }
+            Box(
+                contentAlignment = Alignment.BottomCenter,
+                modifier = Modifier.fillMaxSize()
+            ){
+                AnimatedNavHost(
+                    navController = navController,
+                    startDestination = "Onboarding",
+                    modifier = Modifier.padding(innerPadding)
                 ) {
-                    OnboardingScreen(navController = navController)
-                }
+                    composable(
+                        "Onboarding",
+                        enterTransition = { fadeIn() },
+                        exitTransition = { fadeOut() }
+                    ) {
+                        OnboardingScreen(navController = navController)
+                    }
 
-                composable("Sign In") {
-                    SignIn(
-                        navController = navController,
-                        onEvent = onEvent,
-                        state = state,
-                        userViewModel = viewModel)
-                }
+                    composable("Sign In") {
+                        SignIn(
+                            navController = navController,
+                            onEvent = onEvent,
+                            state = state,
+                            userViewModel = viewModel
+                        )
+                    }
 
-                composable("Sign Up") {
-                    SignUp(navController = navController, onEvent = onEvent, state = state)
-                }
+                    composable("Sign Up") {
+                        SignUp(navController = navController, onEvent = onEvent, state = state)
+                    }
 
-                composable("Home") {
-                    HomeScreen(state = state, onEvent = onEvent)
+                    composable("Home") {
+                        HomeScreen(state = state, onEvent = onEvent)
+                    }
+
+                    composable("Menu Screen") {
+                        MenuScreen(navController = navController)
+                    }
+                }
+                if (currentRoute == "Home" || currentRoute == "Menu Screen") {
+                    BottomNavigationBar(navController = navController)
                 }
             }
         }
