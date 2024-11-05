@@ -10,28 +10,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun CustomIcon(
-    tint: Color,
-    backgroundColor: Color,
-    icon: Painter
+    customIconData: CustomIconData
 ){
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .clip(shape = RoundedCornerShape(40))
-            .background(color = backgroundColor)
+            .background(color = customIconData.backgroundColor)
     ) {
         Icon(
-            painter = icon,
+            painter = customIconData.icon,
             contentDescription = "Profile Icon",
             modifier = Modifier.padding(8.dp),
-            tint = tint
+            tint = customIconData.tint
         )
     }
 }

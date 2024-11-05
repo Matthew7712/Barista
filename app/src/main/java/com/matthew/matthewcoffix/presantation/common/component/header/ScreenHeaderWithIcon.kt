@@ -15,6 +15,7 @@ import androidx.compose.ui.res.stringResource
 import com.matthew.matthewcoffix.R
 import com.matthew.matthewcoffix.data.state.UserState
 import com.matthew.matthewcoffix.presantation.common.component.icons.CustomIcon
+import com.matthew.matthewcoffix.presantation.common.component.icons.CustomIconData
 import com.matthew.matthewcoffix.presantation.theme.DarkBlue80
 import com.matthew.matthewcoffix.presantation.theme.mediumSixthHeader
 import com.matthew.matthewcoffix.presantation.theme.regularSmallBody
@@ -34,6 +35,6 @@ fun ScreenHeaderWithIcon(
             Text(text = state.email, style = mediumSixthHeader.copy(color = Color.White))
         }
 
-        CustomIcon(tint = Color.White, backgroundColor = DarkBlue80, icon = icon)
+        CustomIcon(CustomIconData(tint = Color.White, backgroundColor = DarkBlue80, icon = icon))
     }
 }

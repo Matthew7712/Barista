@@ -18,7 +18,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.matthew.matthewcoffix.presantation.common.component.icons.CustomIcon
+import com.matthew.matthewcoffix.presantation.common.component.icons.CustomIconData
 import com.matthew.matthewcoffix.presantation.theme.DarkBlue80
+import com.matthew.matthewcoffix.presantation.theme.Dimensions
 import com.matthew.matthewcoffix.presantation.theme.regularBasicBody
 import com.matthew.matthewcoffix.ui.menu.MenuPlate
 
@@ -33,12 +35,12 @@ fun Plate(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .width(Dp(((screenWidth / 2) - 28).toFloat()))
-            .clip(shape = RoundedCornerShape(40))
+            .clip(shape = RoundedCornerShape(Dimensions.RADIUS_40))
             .background(color = DarkBlue80)
             .padding(8.dp)
     ) {
-        CustomIcon(tint = plate.iconColor, backgroundColor = Color.White, icon = painterResource(plate.icon))
-        Spacer(modifier = Modifier.width(20.dp))
+        CustomIcon(CustomIconData(tint = plate.iconColor, backgroundColor = Color.White, icon = painterResource(plate.icon)))
+        Spacer(modifier = Modifier.width(Dimensions.width20))
         Text(text = plate.text, style = regularBasicBody.copy(color = Color.White))
     }
 }

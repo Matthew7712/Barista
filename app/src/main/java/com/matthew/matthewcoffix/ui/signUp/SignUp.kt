@@ -31,6 +31,7 @@ import com.matthew.matthewcoffix.data.state.UserState
 import com.matthew.matthewcoffix.presantation.common.component.BasicButton
 import com.matthew.matthewcoffix.presantation.common.component.input.InputFields
 import com.matthew.matthewcoffix.presantation.theme.DarkBlue100
+import com.matthew.matthewcoffix.presantation.theme.Dimensions
 import com.matthew.matthewcoffix.presantation.theme.regularNormalBody
 import com.matthew.matthewcoffix.presantation.theme.semiBoldFirstHeader
 import com.matthew.matthewcoffix.ui.signIn.components.SignInWithPlatform
@@ -54,7 +55,7 @@ fun SignUp(
         modifier = Modifier
             .fillMaxSize()
             .background(color = DarkBlue100)
-            .padding(horizontal = 24.dp, vertical = 32.dp)
+            .padding(horizontal = Dimensions.width24, vertical = Dimensions.height32)
     ) {
         item {
             Row(
@@ -71,7 +72,7 @@ fun SignUp(
         }
 
         item{
-            Spacer(modifier = Modifier.height(30.dp))
+            Spacer(modifier = Modifier.height(Dimensions.height30))
         }
 
         item {
@@ -82,7 +83,7 @@ fun SignUp(
         }
 
         item {
-            Spacer(modifier = Modifier.height(25.dp))
+            Spacer(modifier = Modifier.height(Dimensions.height25))
         }
         item {
             InputFields(
@@ -94,7 +95,7 @@ fun SignUp(
         }
 
         item {
-            Spacer(modifier = Modifier.height(25.dp))
+            Spacer(modifier = Modifier.height(Dimensions.height25))
         }
 
         item {
@@ -104,7 +105,7 @@ fun SignUp(
         }
 
         item {
-            Spacer(modifier = Modifier.height(25.dp))
+            Spacer(modifier = Modifier.height(Dimensions.height25))
         }
 
         item {
@@ -112,7 +113,7 @@ fun SignUp(
         }
 
         item {
-            Spacer(modifier = Modifier.height(25.dp))
+            Spacer(modifier = Modifier.height(Dimensions.height25))
         }
 
         item {

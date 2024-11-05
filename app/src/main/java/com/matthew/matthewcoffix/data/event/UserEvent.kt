@@ -7,6 +7,7 @@ sealed interface UserEvent {
     object SaveUser: UserEvent
     data class AddUser(val email: String, val password: String): UserEvent
     data class SetEmail(val email: String): UserEvent
+    data class SetAuth(val isAuth: Boolean): UserEvent
     data class SetPassword(val password: String): UserEvent
     data class SetFirstName(val firstName: String): UserEvent
     data class SetLastName(val lastName: String): UserEvent

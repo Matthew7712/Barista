@@ -23,6 +23,7 @@ import com.matthew.matthewcoffix.presantation.theme.mediumSmallBody
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import com.matthew.matthewcoffix.presantation.theme.Dimensions
 
 @Composable
 fun InputField(
@@ -50,9 +51,9 @@ fun InputField(
         modifier = Modifier
             .fillMaxWidth()
             .height(56.dp)
-            .background(color = DarkBlue100)
-            .clip(shape = RoundedCornerShape(15.dp))
-            .border(width = 1.dp, color = DarkBlue100, shape = RoundedCornerShape(15.dp)),
+            .background(color = Color.Transparent)
+            .clip(shape = RoundedCornerShape(Dimensions.RADIUS_20))
+            .border(width = 1.dp, color = DarkBlue100, shape = RoundedCornerShape(Dimensions.RADIUS_20)),
         colors = TextFieldDefaults.colors(
             unfocusedContainerColor = DarkBlue80,
             unfocusedTextColor = Color.White,

@@ -5,6 +5,7 @@ import com.matthew.matthewcoffix.data.entity.User
 
 data class UserState(
     val users: List<User> = emptyList(),
+    val isAuth: Boolean = false,
     val email: String = "",
     val password: String = "",
     val firstName: String = "",

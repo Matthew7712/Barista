@@ -1,9 +1,11 @@
 package com.matthew.matthewcoffix.ui.menu
 
-import androidx.compose.ui.graphics.painter.Painter
+import androidx.annotation.DrawableRes
 
 data class MenuItem(
+    val id: Int,
     val cost: Float,
     val text: String,
-    val image: Painter
+    val description: String?,
+    @DrawableRes val image: Int
 )

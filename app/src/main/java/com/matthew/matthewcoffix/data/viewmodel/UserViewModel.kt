@@ -1,5 +1,6 @@
 package com.matthew.matthewcoffix.data.viewmodel
 
+import androidx.compose.runtime.remember
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.matthew.matthewcoffix.data.SortType
@@ -38,6 +39,7 @@ class UserViewModel(private val userDao: UserDao) : ViewModel() {
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), UserState())
 
     fun authenticateUser(email: String, password: String, onSuccess: () -> Unit, onError: () -> Unit) {
+        val isAuth: Boolean = true
         viewModelScope.launch {
             val user = withContext(Dispatchers.IO) {
                 userDao.auth(email, password)
@@ -58,7 +60,8 @@ class UserViewModel(private val userDao: UserDao) : ViewModel() {
                     password = event.password,
                     firstName = "",
                     lastName = "",
-                    phoneNumber = ""
+                    phoneNumber = "",
+                    isAuth = true
                 )
                 viewModelScope.launch(Dispatchers.IO) {
                     userDao.createUser(newUser)
@@ -79,6 +82,7 @@ class UserViewModel(private val userDao: UserDao) : ViewModel() {
                 val user = User(
                     email = email,
                     password = password,
+                    isAuth = true
                 )
                 viewModelScope.launch(Dispatchers.IO) {
                     userDao.createUser(user)
@@ -92,6 +96,12 @@ class UserViewModel(private val userDao: UserDao) : ViewModel() {
             is UserEvent.SetEmail -> {
                 _state.update { it.copy(
                     firstName = event.email
+                ) }
+            }
+
+            is UserEvent.SetAuth -> {
+                _state.update { it.copy(
+                    isAuth = true
                 ) }
             }
             is UserEvent.SetPassword -> {

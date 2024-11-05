@@ -25,6 +25,7 @@ import com.matthew.matthewcoffix.R
 import com.matthew.matthewcoffix.presantation.common.viewmodels.BottomNavigationItem
 import com.matthew.matthewcoffix.presantation.theme.DarkBlue100
 import com.matthew.matthewcoffix.presantation.theme.DarkBlue80
+import com.matthew.matthewcoffix.presantation.theme.Dimensions
 
 @Composable
 fun BottomNavigationBar(
@@ -35,7 +36,7 @@ fun BottomNavigationBar(
     }
 
     Column(
-        modifier = Modifier.clip(shape = RoundedCornerShape(15.dp))
+        modifier = Modifier.clip(shape = RoundedCornerShape(Dimensions.RADIUS_20))
             .background(color = DarkBlue100)
     ) {
         Row(
@@ -43,7 +44,7 @@ fun BottomNavigationBar(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.fillMaxWidth()
                 .height(85.dp)
-                .clip(shape = RoundedCornerShape(25))
+                .clip(shape = RoundedCornerShape(Dimensions.RADIUS_25))
                 .background(color = DarkBlue80)
                 .padding(horizontal = 15.dp)
         ) {
@@ -55,7 +56,10 @@ fun BottomNavigationBar(
                 navController.navigate("Menu Screen")
             })
             BottomNavigationItem(activeIndex = activeIndex == 3, painter = painterResource(id = R.drawable.cart), onClick = {activeIndex = 3})
-            BottomNavigationItem(activeIndex = activeIndex == 4, painter = painterResource(id = R.drawable.profile), onClick = {activeIndex = 4})
+            BottomNavigationItem(activeIndex = activeIndex == 4, painter = painterResource(id = R.drawable.profile), onClick = {
+                activeIndex = 4
+                navController.navigate("Profile")
+            })
         }
     }
 }

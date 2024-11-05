@@ -12,18 +12,25 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.matthew.matthewcoffix.R
 import com.matthew.matthewcoffix.data.event.UserEvent
 import com.matthew.matthewcoffix.data.state.UserState
+import com.matthew.matthewcoffix.data.viewmodel.ProductViewModel
 import com.matthew.matthewcoffix.presantation.common.component.MenuCard
 import com.matthew.matthewcoffix.presantation.common.component.Plate
 import com.matthew.matthewcoffix.presantation.common.component.header.ScreenHeaderWithIcon
 import com.matthew.matthewcoffix.presantation.theme.DarkBlue100
+import com.matthew.matthewcoffix.presantation.theme.Dimensions
 import com.matthew.matthewcoffix.presantation.theme.regularSmallBody
 import com.matthew.matthewcoffix.presantation.theme.semiboldThirdHeader
 import com.matthew.matthewcoffix.ui.home.components.HomeScreenSalesBanner
@@ -35,12 +42,9 @@ fun HomeScreen(
     state: UserState,
     onEvent: (UserEvent) -> Unit
 ){
-    val drinksItem = listOf(
-        MenuItem(text = "Kapi Susu Brutai", image = painterResource(R.drawable.nathan), cost = 2.05F),
-        MenuItem(text = "Caramel Suntay", image = painterResource(R.drawable.nafinia_putra_kwdp_0pok_i_unsplash), cost = 2.95F),
-        MenuItem(text = "Kapi Susu Brutai", image = painterResource(R.drawable.nathan), cost = 2.05F),
-        MenuItem(text = "Caramel Suntay", image = painterResource(R.drawable.nafinia_putra_kwdp_0pok_i_unsplash), cost = 2.95F)
-    )
+    val navController: NavController = rememberNavController()
+    val productViewModel: ProductViewModel = remember { ProductViewModel() }
+    val productList by productViewModel.items.observeAsState(emptyList())
 
     val firstMenuItems = listOf(
         MenuPlate(R.drawable.star, "Signatured", Color.Black),
@@ -60,16 +64,16 @@ fun HomeScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(color = DarkBlue100)
-            .padding(start = 24.dp, end = 24.dp, top = 32.dp)
+            .padding(start = Dimensions.width24, end = Dimensions.width24, top = Dimensions.height32)
     ) {
         item {
             ScreenHeaderWithIcon(state = state, icon = painterResource(R.drawable.profile))
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(Dimensions.height20))
         }
 
         item{
             HomeScreenSalesBanner()
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(Dimensions.height20))
         }
 
         item {
@@ -82,12 +86,12 @@ fun HomeScreen(
                 Text(text = "View All", style = regularSmallBody.copy(color = Color.LightGray))
             }
 
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(Dimensions.height20))
         }
 
         items(firstMenuItems.chunked(2)) { rowItems ->
             Row(
-                horizontalArrangement = Arrangement.spacedBy(20.dp),
+                horizontalArrangement = Arrangement.spacedBy(Dimensions.width20),
                 modifier = Modifier.fillMaxWidth()
             ) {
                 rowItems.forEach{ item ->
@@ -97,7 +101,7 @@ fun HomeScreen(
                 }
             }
 
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(Dimensions.height20))
         }
 
         item {
@@ -110,12 +114,12 @@ fun HomeScreen(
                 Text(text = "View All", style = regularSmallBody.copy(color = Color.LightGray))
             }
 
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(Dimensions.height20))
         }
 
         items(secondMenuItems.chunked(2)){ items ->
             Row(
-                horizontalArrangement = Arrangement.spacedBy(20.dp),
+                horizontalArrangement = Arrangement.spacedBy(Dimensions.width20),
                 modifier = Modifier.fillMaxWidth()
             ) {
                 items.forEach{ item ->
@@ -125,24 +129,25 @@ fun HomeScreen(
                 }
             }
 
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(Dimensions.height20))
         }
 
-        items(drinksItem.chunked(2)) { rowItems ->
+        items(productList.chunked(2)) { rowItems ->
             Row(
-                horizontalArrangement = Arrangement.spacedBy(20.dp), // Отступ между элементами
+                horizontalArrangement = Arrangement.spacedBy(Dimensions.width20), // Отступ между элементами
                 modifier = Modifier.fillMaxWidth()
             ) {
                 rowItems.forEach { item ->
                     MenuCard(
-                        item
+                        item,
+                        navController
                     )
                 }
                 if (rowItems.size < 2) {
                     Spacer(modifier = Modifier.weight(1f))
                 }
             }
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(Dimensions.height20))
         }
 
         item {

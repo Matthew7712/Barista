@@ -14,6 +14,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -23,7 +24,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.matthew.matthewcoffix.R
 import com.matthew.matthewcoffix.data.event.UserEvent
@@ -32,6 +32,7 @@ import com.matthew.matthewcoffix.data.viewmodel.UserViewModel
 import com.matthew.matthewcoffix.presantation.common.component.BasicButton
 import com.matthew.matthewcoffix.presantation.common.component.input.InputFields
 import com.matthew.matthewcoffix.presantation.theme.DarkBlue100
+import com.matthew.matthewcoffix.presantation.theme.Dimensions
 import com.matthew.matthewcoffix.presantation.theme.Orange40
 import com.matthew.matthewcoffix.presantation.theme.regularNormalBody
 import com.matthew.matthewcoffix.presantation.theme.semiBoldFirstHeader
@@ -52,12 +53,17 @@ fun SignIn(
         mutableStateOf("")
     }
 
+    LaunchedEffect(state.isAuth) {
+        if (state.isAuth){
+            navController.navigate("Home")
+        }
+    }
 
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
             .background(color = DarkBlue100)
-            .padding(horizontal = 24.dp, vertical = 32.dp)
+            .padding(horizontal = Dimensions.width24, vertical = Dimensions.height32)
     ) {
         item {
             Row(
@@ -74,7 +80,7 @@ fun SignIn(
         }
 
         item{
-            Spacer(modifier = Modifier.height(30.dp))
+            Spacer(modifier = Modifier.height(Dimensions.height30))
         }
 
         item {
@@ -85,7 +91,7 @@ fun SignIn(
         }
 
         item {
-            Spacer(modifier = Modifier.height(25.dp))
+            Spacer(modifier = Modifier.height(Dimensions.height25))
         }
         item {
             InputFields(
@@ -97,7 +103,7 @@ fun SignIn(
         }
 
         item {
-            Spacer(modifier = Modifier.height(15.dp))
+            Spacer(modifier = Modifier.height(Dimensions.height15))
         }
 
         item {
@@ -111,7 +117,7 @@ fun SignIn(
         }
 
         item {
-            Spacer(modifier = Modifier.height(25.dp))
+            Spacer(modifier = Modifier.height(Dimensions.height25))
         }
 
         item {
@@ -121,7 +127,7 @@ fun SignIn(
         }
 
         item {
-            Spacer(modifier = Modifier.height(25.dp))
+            Spacer(modifier = Modifier.height(Dimensions.height25))
         }
 
         item {
@@ -129,7 +135,7 @@ fun SignIn(
         }
 
         item {
-            Spacer(modifier = Modifier.height(25.dp))
+            Spacer(modifier = Modifier.height(Dimensions.height25))
         }
 
         item {

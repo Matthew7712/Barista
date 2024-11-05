@@ -19,6 +19,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.matthew.matthewcoffix.presantation.theme.DarkBlue80
+import com.matthew.matthewcoffix.presantation.theme.Dimensions
 
 @Composable
 fun IconButton(
@@ -35,7 +36,7 @@ fun IconButton(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier.width(Dp(((screenWidth / 3) - 20).toFloat()))
             .height(56.dp)
-            .clip(shape = RoundedCornerShape(15.dp))
+            .clip(shape = RoundedCornerShape(Dimensions.RADIUS_20))
             .background(DarkBlue80)
             .clickable {
                 onclick()

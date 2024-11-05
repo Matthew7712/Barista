@@ -16,6 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.matthew.matthewcoffix.presantation.theme.Dimensions
 import com.matthew.matthewcoffix.presantation.theme.mediumNormalBody
 
 @Composable
@@ -34,7 +35,7 @@ fun SmallButton(
         modifier = Modifier
             .width(Dp((screenWidth / 3).toFloat()))
             .height(56.dp)
-            .clip(shape = RoundedCornerShape(15.dp))
+            .clip(shape = RoundedCornerShape(Dimensions.RADIUS_20))
             .background(color = backgroundColor)
             .clickable {
                 onClick()

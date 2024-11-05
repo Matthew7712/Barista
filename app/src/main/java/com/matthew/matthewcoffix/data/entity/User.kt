@@ -23,5 +23,8 @@ data class User(
     var lastName: String = "",
 
     @ColumnInfo("phoneNumber")
-    var phoneNumber: String = ""
+    var phoneNumber: String = "",
+
+    @ColumnInfo("isAuth")
+    var isAuth: Boolean = false
 )
