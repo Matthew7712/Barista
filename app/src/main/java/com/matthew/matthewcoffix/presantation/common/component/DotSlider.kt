@@ -1,10 +1,12 @@
 package com.matthew.matthewcoffix.presantation.common.component
 
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.pager.PagerState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -23,9 +25,8 @@ fun DotSlider(
 ) {
     LazyRow(
         modifier = Modifier
-            .wrapContentWidth()
+            .fillMaxWidth()
             .wrapContentHeight()
-            .padding(12.dp)
     ) {
         items(totalDots) { index: Int ->
             IndicatorDot(
